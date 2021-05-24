@@ -44,7 +44,7 @@ RSpec.describe 'Friendships API', type: :request do
     end
   end
 
-  # Friendship test suite
+  # Test suite for POST /friendships
   describe 'POST /frienships' do
     context 'when valid request' do
       before { post "/friendships", params: valid_attributes.to_json, headers: headers }
