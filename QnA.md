@@ -12,7 +12,6 @@ I also usually put JWT methods in the application_controller but I decided to se
 
 ### Is there anything you would have liked to implement but didn't have the time to?
 > I would have used Rails 6 but I haven't had a chance to play with it yet so due to time constraints I decided to use 5.2.4.6. I also would have liked to use a JSON serializer gem. I am a fan of the JSONAPI.org standards `https://jsonapi.org/format/` and the `jsonapi-serializer` gem but for this test I decided to write my own serialized responses.
-# gem 'jsonapi-serializer'
 
 ### What are the security holes (if any) in your system? If there are any, how would you fix them?
 > I tried to make this app as secure as possible. All routes are wrapped with token based authentication except when signing up.
