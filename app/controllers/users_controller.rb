@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.all
-    json_response(@users)
+    json_response(users: UserSerializer.index(@users))
   end
 
   # POST /signup
