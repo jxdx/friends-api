@@ -21,5 +21,5 @@ I also usually put JWT methods in the application_controller but I decided to se
 Also, creating a friendship model wasn't difficult.
 
 ### Notes:
-I tried to follow the instructions exactly as specified. The only change I made was to the friendships POST endpoint.
+> I tried to follow the instructions exactly as specified. The only change I made was to the friendships POST endpoint.
 The instructions asked to create an endpoint that responds to `/users/:email/friendship` but it felt weird to me to have and email address in the URL. I decided to create an endpoint that responds to `/friendships` and accepts email as a param instead.
