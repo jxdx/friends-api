@@ -17,8 +17,8 @@ RSpec.describe 'Users API', type: :request do
 
     it 'returns users' do
       # Note `json` is a custom helper to parse JSON responses
-      expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      expect(json['users']).not_to be_empty
+      expect(json['users'].size).to eq(10)
     end
 
     it 'returns status code 200' do
