@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   post 'login', to: 'authentication#create'
   post 'signup', to: 'users#create'
   get 'users', to: 'users#index'
+  post 'friendships', to: 'friendships#create'
+  get 'users/me/friends', to: 'friendships#index'
 end

@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe 'Users API', type: :request do
   let(:user) { create(:user) }
   let!(:users) { create_list(:user, 9) }
-  let(:headers) { valid_headers.except('Authorization') }
   let(:valid_attributes) do
     attributes_for(:user, password_confirmation: user.password)
   end
@@ -33,10 +32,6 @@ RSpec.describe 'Users API', type: :request do
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
-      end
-
-      it 'returns success message' do
-        expect(json['message']).to match(/Account created successfully/)
       end
 
       it 'returns an authentication token' do

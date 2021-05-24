@@ -19,14 +19,6 @@ class Message
     'Unauthorized request'
   end
 
-  def self.account_created
-    'Account created successfully'
-  end
-
-  def self.account_not_created
-    'Account could not be created'
-  end
-
   def self.expired_token
     'Sorry, your token has expired. Please login to continue.'
   end
