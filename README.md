@@ -41,3 +41,8 @@ get 'users/me/friends', to: 'friendships#index'
 ```
 
 Start the rails server and use a tool like POSTMAN to test.
+
+* QnA
+```
+For answers to the QnA please open the QnA.md file included in this repo.
+```
