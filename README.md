@@ -31,16 +31,17 @@ bundle exec rspec
 ```
 
 * Deployment instructions
-This is an API only that responds to the following endpoints:
 ```
+This is an API only that responds to the following endpoints:
+
 post 'login', to: 'authentication#create'
 post 'signup', to: 'users#create'
 get 'users', to: 'users#index'
 post 'friendships', to: 'friendships#create'
 get 'users/me/friends', to: 'friendships#index'
-```
 
-Start the rails server and use a tool like POSTMAN to test.
+Start the rails server (rails s) and use a tool like POSTMAN to test.
+```
 
 * QnA
 ```
