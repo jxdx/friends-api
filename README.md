@@ -86,7 +86,6 @@ Sample response:
 
 get 'users/me/friends', to: 'friendships#index'
 http://localhost:3000/users/me/friends
-```
 
 Sample response:
 {
