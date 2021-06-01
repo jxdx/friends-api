@@ -1,5 +1,4 @@
 class FriendshipsController < ApplicationController
-
   # GET /users/me/friends
   def index
     friends = @current_user.friendships.includes(:user)
