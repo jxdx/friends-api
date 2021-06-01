@@ -83,6 +83,14 @@ RSpec.describe 'Friendships API', type: :request do
       end
     end
 
+    context 'when the user adds themselves' do
+      it 'does not allow users to be-friend themselves' do
+        expect do
+          post '/friendships', params: is_friend_attributes.to_json, headers: headers
+        end.to_not(change { Friendship.count })
+      end
+    end
+
     context 'when an invalid request is sent' do
       before { post '/friendships', params: {}, headers: headers }
 
