@@ -101,7 +101,9 @@ Sample response:
 * Notes:
 ``` 
 I made a change to the friendships POST endpoint.
-The instructions asked to create an endpoint that responds to `/users/:email/friendship` but it felt weird to me to have and email address in the URL. I decided to create an endpoint that responds to `/friendships` and accepts email as a param instead.
+The instructions asked to create an endpoint that responds to `/users/:email/friendship` but it felt weird 
+to me to have and email address in the URL. I decided to create an endpoint that responds to `/friendships` 
+and accepts email as a param instead.
 I also didn't nest the POST /login under `login:` or the POST /signup under `user:`.
 I send the params directly as I find it cleaner but I realize I'm not following the instructions exactly as specified.
 If you want to send nested params you would need to use params.require and params.permit where as I only use
