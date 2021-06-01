@@ -1,4 +1,4 @@
-# README
+# INSTRUCTIONS
 
 * Ruby version
 ```
@@ -56,11 +56,11 @@ Sample response:
     "users": [
         {
             "name": "Josh Davies",
-            "email": "jxdxio2@gmail.com"
+            "email": "jxdxio@gmail.com"
         },
         {
             "name": "Frank Davies",
-            "email": "josh@gmail.com"
+            "email": "jxdxio2@gmail.com"
         }
     ]
 }
@@ -76,7 +76,7 @@ Sample response:
             "email": "jxdxio@gmail.com"
         },
         "friend": {
-            "name": "Josh Davies",
+            "name": "Frank Davies",
             "email": "jxdxio2@gmail.com"
         }
     }
@@ -90,7 +90,7 @@ Sample response:
 {
     "friends": [
         {
-            "name": "Josh Davies",
+            "name": "Frank Davies",
             "email": "jxdxio2@gmail.com"
         }
     ]
