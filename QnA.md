@@ -2,7 +2,10 @@
 > I spent ~6 to 8 hours over multiple days
 
 ### What was the hardest part?
-> Managing all the different friendships was harder than I expected.
+> The hardest part was not returning yourself as a friend when someone else added you.
+I would have liked to do it all in one request but I was able to acccomplish this with 2 request
+and then joni the results. See friendship model, friendships method. 
+Managing all the different friendships was also harder than I expected.
 I created a FriendshipService class with an error handler to make this as clean as possible.
 I also don't normally use request tests but I tried them for this assignement, request specs
 drive behavior through the full stack, including routing. However, it doesn't allow you
@@ -10,7 +13,7 @@ to use let in context blocks as controller tests do. If I was to do this again I
 have used controller tests instead.
 
 ### Did you learn anything new?
-> I learned to use request specs. I have created APIs several times but it was fun to go over everything
+> I learned to use request specs. Also, I have created APIs several times but it was fun to go over everything
 again from scratch.
 
 ### Is there anything you would have liked to implement but didn't have the time to?
