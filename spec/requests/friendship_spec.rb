@@ -4,39 +4,43 @@ require 'rails_helper'
 RSpec.describe 'Friendships API', type: :request do
   let(:user) { create(:user) }
   let!(:friend) { create(:user) }
+  let!(:friend2) { create(:user) }
   # authorize request
   let(:headers) { valid_headers }
-  let(:valid_attributes) { { email: friend.email } }
+  let(:valid_attributes) { { email: friend2.email } }
   let(:invalid_attributes) { { email: 'dummy@gmail.com' } }
+  let!(:friendship) { create(:friendship, user_id: user.id, friend_id: friend.id) }
+  let!(:friendship2) { create(:friendship, user_id: friend.id, friend_id: user.id) }
 
   let(:expected_response) do
     {
       'friendship': {
-        'user': { 
+        'user': {
           'name': user.name,
           'email': user.email
         },
         'friend': {
-          'name': friend.name,
-          'email': friend.email
+          'name': friend2.name,
+          'email': friend2.email
         }
       }
     }.with_indifferent_access
-    
   end
 
   # Test suite for GET /users/me/friends
   describe 'GET /users/me/friends' do
-    let!(:friendship) { Friendship.create(user_id: user.id, friend_id: friend.id) }
-
-    before do 
+    before do
       get '/users/me/friends', params: {}, headers: headers
     end
 
-    it 'returns friends' do
-      # Note `json` is a custom helper to parse JSON responses
-      expect(json['friends']).not_to be_empty
-      expect(json['friends'].size).to eq(1)
+    context 'when the logged in user has been added as a friend and is a friend' do
+      it 'returns friends inlcuding the logged in user' do
+        # Note `json` is a custom helper to parse JSON responses
+        expect(json['friends']).not_to be_empty
+        expect(json['friends'].size).to eq(2)
+        expect(json['friends'][0]['email']).to eq(user.email)
+        expect(json['friends'][1]['email']).to eq(friend.email)
+      end
     end
 
     it 'returns status code 200' do
@@ -47,7 +51,7 @@ RSpec.describe 'Friendships API', type: :request do
   # Test suite for POST /friendships
   describe 'POST /frienships' do
     context 'when valid request' do
-      before { post "/friendships", params: valid_attributes.to_json, headers: headers }
+      before { post '/friendships', params: valid_attributes.to_json, headers: headers }
 
       it 'creates a new friendship' do
         expect(response).to have_http_status(201)
@@ -63,11 +67,11 @@ RSpec.describe 'Friendships API', type: :request do
     end
 
     context 'when a friendship already exists' do
-      before { post "/friendships", params: valid_attributes.to_json, headers: headers }
-      it 'does not change create the friendship twice' do
+      before { post '/friendships', params: valid_attributes.to_json, headers: headers }
+      it 'does not create the friendship twice' do
         expect do
-          post "/friendships", params: valid_attributes.to_json, headers: headers
-        end.to_not change { Friendship.count }
+          post '/friendships', params: valid_attributes.to_json, headers: headers
+        end.to_not(change { Friendship.count })
       end
     end
 
