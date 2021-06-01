@@ -26,7 +26,7 @@ Run the following command in the rails console:
 bundle exec rspec
 ```
 
-* Deployment instructions
+* How to use the API
 ```
 Start the rails server (rails s) and use a tool like POSTMAN to test.
 
