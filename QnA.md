@@ -24,12 +24,3 @@ again from scratch.
 
 ### Do you feel that your skills were well tested?
 > This was a real lesson in being thorough, I mistakenly missed a lot of the friendship functionality, namely, only allowing one friendship between 2 users and not being able to add yourself. I read the instructions quickly and though to myself this seems way too easy. I should have trusted my gut and been more complete.  
-
-### Notes:
-> I made a change to the friendships POST endpoint.
-The instructions asked to create an endpoint that responds to `/users/:email/friendship` but it felt weird to me to have and email address in the URL. I decided to create an endpoint that responds to `/friendships` and accepts email as a param instead.
-I also didn't nest the POST /login under `login:` or the POST /signup under `user:`.
-I send the params directly as I find it cleaner but I realize I'm not following the instructions exactly as specified.
-If you want to send nested params you would need to use params.require and params.permit where as I only use
-params.permit. Example would be: 
-params.require(:user).permit(:name, :password, :password_confirmation, :email) and then update the tests.
