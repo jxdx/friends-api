@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_05_24_204233) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    # Only one friend relationship can exist between two users 
     t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end

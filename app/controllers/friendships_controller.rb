@@ -1,8 +1,9 @@
 class FriendshipsController < ApplicationController
   # GET /users/me/friends
   def index
-    friends = @current_user.friendships.includes(:user)
-    json_response({friends: FriendshipSerializer.index(friends)})
+    # If another user adds you as a friend, it will be returned in the GET /users/me/friends response
+    friends = Friendship.friendships(@current_user)
+    json_response({ friends: FriendshipSerializer.index(friends) })
   end
 
   # POST /friendships
