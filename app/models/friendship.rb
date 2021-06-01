@@ -8,7 +8,9 @@ class Friendship < ApplicationRecord
   validates_uniqueness_of :user_id, scope: :friend_id
 
   def self.friendships(user)
-    Friendship.joins(:user).where('user_id = ? OR friend_id = ?', user.id, user.id)
-              .order(created_at: :asc)
+    my_friends = Friendship.where(user_id: user.id).pluck(:friend_id)
+    i_am_friended = Friendship.where(friend_id: user.id).pluck(:user_id)
+    ids = my_friends + i_am_friended
+    User.where(id: ids)
   end
 end

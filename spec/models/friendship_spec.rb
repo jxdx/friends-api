@@ -8,22 +8,19 @@ RSpec.describe Friendship, type: :model do
   describe '#friendships' do
     let(:user) { create(:user) }
     let(:friend) { create(:user) }
-    let!(:friendship) { create(:friendship, user_id: user.id, friend_id: friend.id)}
-
     context 'when the logged in user has a friend' do
-      it 'returns the correct user as a friend' do
-        expect(Friendship.first.user_id).to eq(user.id)
-        expect(Friendship.first.friend_id).to eq(friend.id)
+      let!(:friendship) { create(:friendship, user_id: user.id, friend_id: friend.id) }
+
+      it 'returns the correct user as a friend (not yourself)' do
+        expect(described_class.friendships(user).first).to eq(friend)
       end
     end
 
     context 'when the logged in user is a friend' do
-      let!(:friendship2) { create(:friendship, user_id: friend.id, friend_id: user.id)}
-      it 'returns both friendshp records' do
-        expect(Friendship.first.user_id).to eq(user.id)
-        expect(Friendship.first.friend_id).to eq(friend.id)
-        expect(Friendship.last.user_id).to eq(friend.id)
-        expect(Friendship.last.friend_id).to eq(user.id)
+      let!(:friendship) { create(:friendship, user_id: friend.id, friend_id: user.id) }
+
+      it 'returns the correct user as a friend (not yourself)' do
+        expect(described_class.friendships(user).first).to eq(friend)
       end
     end
   end

@@ -37,7 +37,7 @@ RSpec.describe 'Friendships API', type: :request do
         # Note `json` is a custom helper to parse JSON responses
         expect(json['friends']).not_to be_empty
         expect(json['friends'].size).to eq(1)
-        expect(json['friends'][0]['email']).to eq(user.email)
+        expect(json['friends'][0]['email']).to eq(friend.email)
       end
     end
 

@@ -2,8 +2,8 @@ class FriendshipSerializer
   def self.index(friends)
     friends.map do |friend|
       {
-        'name': friend.user.name,
-        'email': friend.user.email
+        'name': friend.name,
+        'email': friend.email
       }
     end
   end
