@@ -13,7 +13,6 @@ class FriendshipsController < ApplicationController
 
     friendship = Friendships::FriendshipService.create(@current_user, friend)
     json_response({ friendship: FriendshipSerializer.create(@current_user, friend) }, ApiMessage::CREATED) if friendship
-
   rescue ArgumentError, Friendships::InvalidRequestError => e
     api_error(e.message, ApiMessage::ERROR_CODE_UNPROCESSABLE_ENTITY)
   end

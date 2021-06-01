@@ -15,7 +15,7 @@ module Friendships
       # create friendship
       friendship = Friendship.new(user_id: user.id, friend_id: friend.id)
       raise Friendships::InvalidRequestError, 'We were unable to add this person as your friend.' unless friendship.save
-      
+
       friendship
     end
   end
