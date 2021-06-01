@@ -28,7 +28,6 @@ RSpec.describe 'Friendships API', type: :request do
   # Test suite for GET /users/me/friends
   describe 'GET /users/me/friends' do
     let!(:friendship) { create(:friendship, user_id: user.id, friend_id: friend.id) }
-
     before do
       get '/users/me/friends', params: {}, headers: headers
     end
@@ -39,6 +38,17 @@ RSpec.describe 'Friendships API', type: :request do
         expect(json['friends']).not_to be_empty
         expect(json['friends'].size).to eq(1)
         expect(json['friends'][0]['email']).to eq(user.email)
+      end
+    end
+
+    describe "when you've been added as a friend" do
+      let!(:friendship) { create(:friendship, user_id: friend.id, friend_id: user.id) }
+      context 'when another user adds you as a friend' do
+        it 'returns them as a friend when you list your friends' do
+          expect(json['friends']).not_to be_empty
+          expect(json['friends'].size).to eq(1)
+          expect(json['friends'][0]['email']).to eq(friend.email)
+        end
       end
     end
 
