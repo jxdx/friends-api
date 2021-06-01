@@ -48,6 +48,8 @@ Sample response:
     "auth_token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2LCJleHAiOjE2MjI2Njc2MDN9.s7_XFtChYV-xoEBnJx5PajwbrYM5lRGYetnRN7S2Jjo"
 }
 
+The remaining endpoints must be sent with a JWT in the Authorization header (Authorization: Bearer <token>).
+
 get 'users', to: 'users#index'
 http://localhost:3000/users
 
